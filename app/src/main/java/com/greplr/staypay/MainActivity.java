@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -190,7 +192,24 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             if (s != null) {
-                //TODO
+                String regex = "hotel/(\\d*)/(\\d*)";
+                Pattern p = Pattern.compile(regex);
+                Matcher m = p.matcher(s);
+                if (m.find()) {
+                    new GetTask() {
+                        @Override
+                        protected void onPostExecute(String s) {
+                            Log.d(TAG, s);
+                        }
+                    }.execute(s + "?cmd=unlock&userid=42");
+                } else {
+                    new GetTask() {
+                        @Override
+                        protected void onPostExecute(String s) {
+                            Log.d(TAG, s);
+                        }
+                    }.execute(s);
+                }
             }
         }
     }
