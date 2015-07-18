@@ -23,7 +23,7 @@ public class HotelActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private JSONObject jsonObject;
-    private JSONArray jsonArray = null;
+    public static JSONArray jsonArray = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +84,7 @@ public class HotelActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
             switch (holder.getItemViewType()) {
                 case 0:
                     HotelViewHolder hotelViewHolder = (HotelViewHolder) holder;
@@ -102,6 +102,14 @@ public class HotelActivity extends AppCompatActivity {
                         roomViewHolder.roomType.setText(jsonArray.getJSONObject(position - 1).getString("type_name"));
                         roomViewHolder.roomBeds.setText(jsonArray.getJSONObject(position - 1).getString("beds"));
                         roomViewHolder.roomRate.setText(jsonArray.getJSONObject(position - 1).getString("rate"));
+                        roomViewHolder.view.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent i = new Intent(getApplicationContext(), BookActivity.class);
+                                i.putExtra("position", position -1);
+                                startActivity(i);
+                            }
+                        });
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -142,9 +150,11 @@ public class HotelActivity extends AppCompatActivity {
             TextView roomBeds;
             TextView roomRate;
             ImageView roomImage;
+            View view;
 
             public RoomViewHolder(View itemView) {
                 super(itemView);
+                view = itemView;
                 roomType = (TextView) itemView.findViewById(R.id.room_type);
                 roomsAvailable = (TextView) itemView.findViewById(R.id.room_available);
                 roomBeds = (TextView) itemView.findViewById(R.id.room_beds);

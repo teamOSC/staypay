@@ -1,16 +1,53 @@
 package com.greplr.staypay;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import org.json.JSONException;
 
 public class BookActivity extends AppCompatActivity {
+
+    private static final String TAG = "BookingActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
+        Intent intent = getIntent();
+        int position = intent.getIntExtra("position", 0);
+        TextView bookingRoom = (TextView) findViewById(R.id.booking_room);
+        EditText bookingName = (EditText) findViewById(R.id.booking_name);
+        DatePicker bookingCheckoutDate = (DatePicker) findViewById(R.id.booking_date_picker);
+        Button bookingUserID = (Button) findViewById(R.id.booking_id);
+        Button bookingSubmit = (Button) findViewById(R.id.booking_submit);
+
+        try {
+            bookingRoom.setText(HotelActivity.jsonArray.getJSONObject(position).getString("type_name"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        bookingUserID.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        bookingSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override
