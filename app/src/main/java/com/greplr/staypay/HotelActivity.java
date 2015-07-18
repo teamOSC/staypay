@@ -21,9 +21,9 @@ import org.json.JSONObject;
 
 public class HotelActivity extends AppCompatActivity {
 
+    public static JSONArray jsonArray = null;
     private RecyclerView mRecyclerView;
     private JSONObject jsonObject;
-    public static JSONArray jsonArray = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +106,7 @@ public class HotelActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 Intent i = new Intent(getApplicationContext(), BookActivity.class);
-                                i.putExtra("position", position -1);
+                                i.putExtra("position", position - 1);
                                 startActivity(i);
                             }
                         });

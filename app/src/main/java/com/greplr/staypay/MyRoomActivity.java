@@ -1,9 +1,12 @@
 package com.greplr.staypay;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class MyRoomActivity extends AppCompatActivity {
 
@@ -11,6 +14,10 @@ public class MyRoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_room);
+        TextView roomNumber = (TextView) findViewById(R.id.myroom_no);
+        RecyclerView appliances = (RecyclerView) findViewById(R.id.myroom_recyclerview);
+        Button roomCleaning = (Button) findViewById(R.id.myroom_clean);
+        Button roomService = (Button) findViewById(R.id.myroom_service);
     }
 
     @Override

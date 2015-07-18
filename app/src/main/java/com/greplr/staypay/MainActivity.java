@@ -17,6 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -192,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             if (s != null) {
-                String regex = "hotel/(\\d*)/(\\d*)";
+                String regex = "hotel/(\\d*)/room";
                 Pattern p = Pattern.compile(regex);
                 Matcher m = p.matcher(s);
                 if (m.find()) {
@@ -200,8 +203,19 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         protected void onPostExecute(String s) {
                             Log.d(TAG, s);
+                            try {
+                                if (new JSONObject(s).getString("success").equals("true")) {
+                                    Intent intent = new Intent(getApplicationContext(), MyRoomActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Authorization error", Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
-                    }.execute(s + "?cmd=unlock&userid=42");
+                    }.execute(s + "?cmd=unlock&user_id=42");
                 } else {
                     new GetTask() {
                         @Override
