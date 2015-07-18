@@ -3,6 +3,7 @@ package com.greplr.staypay;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,8 +11,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class BookActivity extends AppCompatActivity {
 
@@ -22,9 +25,9 @@ public class BookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
         Intent intent = getIntent();
-        int position = intent.getIntExtra("position", 0);
+        final int position = intent.getIntExtra("position", 0);
         TextView bookingRoom = (TextView) findViewById(R.id.booking_room);
-        EditText bookingName = (EditText) findViewById(R.id.booking_name);
+        final EditText bookingName = (EditText) findViewById(R.id.booking_name);
         DatePicker bookingCheckoutDate = (DatePicker) findViewById(R.id.booking_date_picker);
         Button bookingUserID = (Button) findViewById(R.id.booking_id);
         Button bookingSubmit = (Button) findViewById(R.id.booking_submit);
@@ -45,7 +48,33 @@ public class BookActivity extends AppCompatActivity {
         bookingSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (bookingName.getText().length() != 0) {
+                    try {
+                        new GetTask() {
+                            @Override
+                            protected void onPostExecute(String s) {
+                                super.onPostExecute(s);
+                                Log.d(TAG, s);
+                                try {
+                                    JSONObject jsonObject = new JSONObject(s);
+                                    if (jsonObject.getString("success").equals("true")) {
+                                        Toast.makeText(getApplicationContext(), "Room no " + jsonObject.getString("room_no") + " booked", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "Error in booking", Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    Toast.makeText(getApplicationContext(), "Room not available", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }.execute("http://192.168.43.21:8000/hotel/24/" + HotelActivity.jsonArray.getJSONObject(position).getString("type_id") + "?user_id=42");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    bookingName.setError("Required");
+                }
             }
         });
     }
