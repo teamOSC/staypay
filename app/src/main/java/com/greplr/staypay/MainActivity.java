@@ -207,6 +207,10 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         protected void onPostExecute(String s) {
                             Log.d(TAG, s);
+                            Intent intent = new Intent(getApplicationContext(), HotelActivity.class);
+                            intent.putExtra("json", s);
+                            startActivity(intent);
+                            finish();
                         }
                     }.execute(s);
                 }
