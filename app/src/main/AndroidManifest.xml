@@ -41,6 +41,14 @@
             android:name=".HotelActivity"
             android:label="@string/title_activity_hotel" >
         </activity>
+        <activity
+            android:name=".BookActivity"
+            android:label="@string/title_activity_book" >
+        </activity>
+        <activity
+            android:name=".MyRoomActivity"
+            android:label="@string/title_activity_my_room" >
+        </activity>
     </application>
 
 </manifest>

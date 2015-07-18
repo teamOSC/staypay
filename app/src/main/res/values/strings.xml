@@ -5,4 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_check">CheckActivity</string>
     <string name="title_activity_hotel">HotelActivity</string>
+    <string name="title_activity_book">BookActivity</string>
+    <string name="title_activity_my_room">MyRoomActivity</string>
 </resources>
