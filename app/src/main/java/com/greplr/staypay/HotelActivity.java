@@ -11,7 +11,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,6 +23,7 @@ public class HotelActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private JSONObject jsonObject;
+    private JSONArray jsonArray = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +34,7 @@ public class HotelActivity extends AppCompatActivity {
         String jsonString = intent.getStringExtra("json");
         try {
             jsonObject = new JSONObject(jsonString);
+            jsonArray = jsonObject.getJSONArray("rooms");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -65,19 +71,41 @@ public class HotelActivity extends AppCompatActivity {
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            switch(viewType){
-                case 0 : CardView v = (CardView) LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.cardview_hotel_main, parent, false);
+            switch (viewType) {
+                case 0:
+                    CardView v = (CardView) LayoutInflater.from(parent.getContext())
+                            .inflate(R.layout.cardview_hotel_main, parent, false);
                     return new HotelAdapter.HotelViewHolder(v);
-                default : CardView view = (CardView) LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.cardview_hotel_room, parent, false);
+                default:
+                    CardView view = (CardView) LayoutInflater.from(parent.getContext())
+                            .inflate(R.layout.cardview_hotel_room, parent, false);
                     return new HotelAdapter.RoomViewHolder(view);
             }
         }
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+            switch (holder.getItemViewType()) {
+                case 0:
+                    HotelViewHolder hotelViewHolder = (HotelViewHolder) holder;
+                    try {
+                        hotelViewHolder.hotelName.setText(jsonObject.getString("name"));
+                        hotelViewHolder.ratingBar.setRating(Float.parseFloat(jsonObject.getString("rating")));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                default:
+                    RoomViewHolder roomViewHolder = (RoomViewHolder) holder;
+                    try {
+                        roomViewHolder.roomsAvailable.setText(jsonArray.getJSONObject(position - 1).getString("available"));
+                        roomViewHolder.roomType.setText(jsonArray.getJSONObject(position - 1).getString("type_name"));
+                        roomViewHolder.roomBeds.setText(jsonArray.getJSONObject(position - 1).getString("beds"));
+                        roomViewHolder.roomRate.setText(jsonArray.getJSONObject(position - 1).getString("rate"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+            }
         }
 
         @Override
@@ -87,25 +115,41 @@ public class HotelActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            try {
-                return jsonObject.getJSONArray("rooms").length() + 1;
-            } catch (JSONException e) {
-                e.printStackTrace();
+            if (jsonArray != null) {
+                return jsonArray.length() + 1;
             }
             return 0;
         }
 
         public class HotelViewHolder extends RecyclerView.ViewHolder {
 
+            ImageView hotelLogo;
+            RatingBar ratingBar;
+            TextView hotelName;
+
             public HotelViewHolder(View itemView) {
                 super(itemView);
+                hotelLogo = (ImageView) itemView.findViewById(R.id.room_image);
+                ratingBar = (RatingBar) itemView.findViewById(R.id.hotel_rating);
+                hotelName = (TextView) itemView.findViewById(R.id.hotel_name);
             }
         }
 
         public class RoomViewHolder extends RecyclerView.ViewHolder {
 
+            TextView roomType;
+            TextView roomsAvailable;
+            TextView roomBeds;
+            TextView roomRate;
+            ImageView roomImage;
+
             public RoomViewHolder(View itemView) {
                 super(itemView);
+                roomType = (TextView) itemView.findViewById(R.id.room_type);
+                roomsAvailable = (TextView) itemView.findViewById(R.id.room_available);
+                roomBeds = (TextView) itemView.findViewById(R.id.room_beds);
+                roomRate = (TextView) itemView.findViewById(R.id.room_rate);
+                roomImage = (ImageView) itemView.findViewById(R.id.room_image);
             }
         }
     }
