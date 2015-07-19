@@ -1,8 +1,9 @@
 package com.greplr.staypay;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -17,6 +18,9 @@ public class MyRoomActivity extends AppCompatActivity {
         TextView roomNumber = (TextView) findViewById(R.id.myroom_no);
         Button roomCleaning = (Button) findViewById(R.id.myroom_clean);
         Button roomService = (Button) findViewById(R.id.myroom_service);
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        roomNumber.setText(sp.getString("room_number", "Unknown"));
     }
 
     @Override

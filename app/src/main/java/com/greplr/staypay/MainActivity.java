@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
@@ -11,6 +12,7 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -198,24 +200,30 @@ public class MainActivity extends AppCompatActivity {
                 String regex = "hotel/(\\d*)/room";
                 Pattern p = Pattern.compile(regex);
                 Matcher m = p.matcher(s);
+                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+              String roomNumber = sp.getString("room_number", "-42");
                 if (m.find()) {
-                    new GetTask() {
-                        @Override
-                        protected void onPostExecute(String s) {
-                            Log.d(TAG, s);
-                            try {
-                                if (new JSONObject(s).getString("success").equals("true")) {
-                                    Intent intent = new Intent(getApplicationContext(), MyRoomActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "Authorization error", Toast.LENGTH_SHORT).show();
+                    if( roomNumber != "-42"){
+                        new GetTask() {
+                            @Override
+                            protected void onPostExecute(String s) {
+                                Log.d(TAG, s);
+                                try {
+                                    if (new JSONObject(s).getString("success").equals("true")) {
+                                        Intent intent = new Intent(getApplicationContext(), MyRoomActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "Authorization error", Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
                                 }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
                             }
-                        }
-                    }.execute(s + "?cmd=unlock&user_id=42");
+                        }.execute(s + roomNumber + "?cmd=unlock&user_id=42");
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Authorization error", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     new GetTask() {
                         @Override
