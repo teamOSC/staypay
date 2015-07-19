@@ -1,9 +1,11 @@
 package com.greplr.staypay;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -87,6 +89,8 @@ public class BookActivity extends AppCompatActivity {
                                     JSONObject jsonObject = new JSONObject(s);
                                     if (jsonObject.getString("success").equals("true")) {
                                         Toast.makeText(getApplicationContext(), "Room no " + jsonObject.getString("room_no") + " booked", Toast.LENGTH_SHORT).show();
+                                        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                        sp.edit().putString("room_number", jsonObject.getString("room_no")).commit();
                                         finish();
                                     } else {
                                         Toast.makeText(getApplicationContext(), "Error in booking", Toast.LENGTH_SHORT).show();
