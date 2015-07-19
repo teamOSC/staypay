@@ -46,9 +46,9 @@ public class MyRoomActivity extends AppCompatActivity implements OnClickListener
         ac.setOnCheckedChangeListener(this);
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        roomNumber.setText(sp.getString("room_number", "Unknown"));
+        roomNumber.setText("Room : " + sp.getString("room_number", "Unknown"));
 
-        BASE_URL = "http://192.168.43.21:8000/hotel/24/room/" + roomNumber.getText().toString() + "?cmd=control&user_id=42";
+        BASE_URL = "http://192.168.43.21:8000/hotel/24/room/" + sp.getString("room_number", "Unknown") + "?cmd=control&user_id=42";
     }
 
     @Override

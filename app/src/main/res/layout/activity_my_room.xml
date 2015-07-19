@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,20 +8,29 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@android:color/holo_orange_light"
     tools:context="com.greplr.staypay.MyRoomActivity">
 
     <TextView
+        android:gravity="center"
+        android:padding="15dp"
         android:id="@+id/myroom_no"
         android:text="My Room : 101"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="italic|bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <LinearLayout
+        android:padding="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="Light"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif-light"
             android:layout_weight="3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -32,11 +42,14 @@
     </LinearLayout>
 
     <LinearLayout
+        android:padding="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="Fan"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif-light"
             android:layout_weight="3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -48,11 +61,14 @@
     </LinearLayout>
 
     <LinearLayout
+        android:padding="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="AC"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif-light"
             android:layout_weight="3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -64,11 +80,14 @@
     </LinearLayout>
 
     <LinearLayout
+        android:padding="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:text="Night Light"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif-light"
             android:layout_weight="3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -80,20 +99,29 @@
     </LinearLayout>
 
     <LinearLayout
+        android:padding="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:textColor="@android:color/white"
             android:layout_weight="1"
             android:id="@+id/myroom_service"
             android:text="Service"
+            android:fontFamily="sans-serif-thin"
+            android:padding="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
 
         <Button
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:textColor="@android:color/white"
             android:layout_weight="1"
             android:id="@+id/myroom_clean"
             android:text="Room Cleaning"
+            android:fontFamily="sans-serif-thin"
+            android:padding="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
