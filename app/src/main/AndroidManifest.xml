@@ -44,7 +44,7 @@
         <activity
             android:name=".BookActivity"
             android:label="@string/title_activity_book"
-            android:theme="@style/AppThemeAction">
+            android:theme="@style/AppThemeAction" >
         </activity>
         <activity
             android:name=".MyRoomActivity"
@@ -53,6 +53,10 @@
         <activity
             android:name=".BitcoinActivity"
             android:label="@string/title_activity_bitcoin" >
+        </activity>
+        <activity
+            android:name=".WebViewActivity"
+            android:label="@string/title_activity_web_view" >
         </activity>
     </application>
 

@@ -1,12 +1,12 @@
 package com.greplr.staypay;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
 
 public class BitcoinActivity extends AppCompatActivity {
 
@@ -14,19 +14,20 @@ public class BitcoinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bitcoin);
-        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.bitcoinlayout);
-        relativeLayout.setOnClickListener(new View.OnClickListener() {
+        int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
+            android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            clipboard.setText("n1J3baXGZW2q6i3fyrzgvbtJ3fFLSckZuM");
+        } else {
+            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            android.content.ClipData clip = android.content.ClipData.newPlainText("text label","n1J3baXGZW2q6i3fyrzgvbtJ3fFLSckZuM");
+            clipboard.setPrimaryClip(clip);
+        }
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int sdk = android.os.Build.VERSION.SDK_INT;
-                if(sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
-                    android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                    clipboard.setText("n1J3baXGZW2q6i3fyrzgvbtJ3fFLSckZuM");
-                } else {
-                    android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                    android.content.ClipData clip = android.content.ClipData.newPlainText("text label","n1J3baXGZW2q6i3fyrzgvbtJ3fFLSckZuM");
-                    clipboard.setPrimaryClip(clip);
-                }
+                startActivity(new Intent(BitcoinActivity.this, WebViewActivity.class));
+                finish();
             }
         });
     }
