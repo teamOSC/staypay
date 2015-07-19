@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
                 String regex = "hotel/(\\d*)/room/(\\d*)";
                 Pattern p = Pattern.compile(regex);
                 Matcher m = p.matcher(s);
-                //SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                final String roomNumber = s.substring(s.length() - 3);
                 //String roomNumber = sp.getString("room_number", "-42");
                 if (m.find()) {
                         new GetTask() {
@@ -210,6 +210,8 @@ public class MainActivity extends AppCompatActivity {
                                 Log.d(TAG, s);
                                 try {
                                     if (new JSONObject(s).getString("success").equals("true")) {
+                                        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                        sp.edit().putString("room_number", roomNumber);
                                         Intent intent = new Intent(getApplicationContext(), MyRoomActivity.class);
                                         startActivity(intent);
                                         finish();
