@@ -29,6 +29,7 @@ import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String USER_ID = "42";
     private static final String TAG = "MainActivity";
     private static final String MIME_TEXT_PLAIN = "text/plain";
 
@@ -219,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                             }
-                        }.execute(s + "?cmd=unlock&user_id=42");
+                        }.execute(s + "?cmd=unlock&user_id="+MainActivity.USER_ID);
 
                 } else {
                     new GetTask() {

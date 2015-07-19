@@ -100,7 +100,7 @@ public class BookActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "Room not available", Toast.LENGTH_SHORT).show();
                                 }
                             }
-                        }.execute("http://192.168.43.21:8000/hotel/24/" + HotelActivity.jsonArray.getJSONObject(position).getString("type_id") + "?user_id=42");
+                        }.execute("http://192.168.43.21:8000/hotel/24/" + HotelActivity.jsonArray.getJSONObject(position).getString("type_id") + "?user_id="+MainActivity.USER_ID);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
