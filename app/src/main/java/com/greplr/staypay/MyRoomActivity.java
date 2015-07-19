@@ -93,7 +93,7 @@ public class MyRoomActivity extends AppCompatActivity implements OnClickListener
             Log.d(TAG, "light");
             new GetTask() {
             }.execute(BASE_URL + "&device=2&status=1");
-        } else if (compoundButton.equals(light) && !b) {
+        } else if (compoundButton.equals(fan) && !b) {
             new GetTask() {
             }.execute(BASE_URL + "&device=2&status=0");
         }
@@ -102,7 +102,7 @@ public class MyRoomActivity extends AppCompatActivity implements OnClickListener
             Log.d(TAG, "light");
             new GetTask() {
             }.execute(BASE_URL + "&device=3&status=1");
-        } else if (compoundButton.equals(light) && !b) {
+        } else if (compoundButton.equals(ac) && !b) {
             new GetTask() {
             }.execute(BASE_URL + "&device=3&status=0");
         }
@@ -111,7 +111,7 @@ public class MyRoomActivity extends AppCompatActivity implements OnClickListener
             Log.d(TAG, "light");
             new GetTask() {
             }.execute(BASE_URL + "&device=4&status=1");
-        } else if (compoundButton.equals(light) && !b) {
+        } else if (compoundButton.equals(nightLight) && !b) {
             new GetTask() {
             }.execute(BASE_URL + "&device=4&status=0");
         }
