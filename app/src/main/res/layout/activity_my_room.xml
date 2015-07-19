@@ -126,6 +126,34 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+    <LinearLayout
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:textColor="@android:color/white"
+            android:layout_weight="1"
+            android:id="@+id/myroom_food"
+            android:text="Food Order"
+            android:fontFamily="sans-serif-thin"
+            android:padding="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:textColor="@android:color/white"
+            android:layout_weight="1"
+            android:id="@+id/myroom_cab"
+            android:text="Cab Book"
+            android:fontFamily="sans-serif-thin"
+            android:padding="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
 
 
 </LinearLayout>
