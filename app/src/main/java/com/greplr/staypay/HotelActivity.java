@@ -108,10 +108,16 @@ public class HotelActivity extends AppCompatActivity {
                         };
                         //Random r = new Random();
                         roomViewHolder.roomImage.setImageDrawable(rooms[position - 1]);
-                        roomViewHolder.roomsAvailable.setText(jsonArray.getJSONObject(position - 1).getString("available"));
+                        roomViewHolder.roomsAvailable.setText(
+                                "Available Rooms : " +
+                                jsonArray.getJSONObject(position - 1).getString("available"));
                         roomViewHolder.roomType.setText(jsonArray.getJSONObject(position - 1).getString("type_name"));
-                        roomViewHolder.roomBeds.setText(jsonArray.getJSONObject(position - 1).getString("beds"));
-                        roomViewHolder.roomRate.setText(jsonArray.getJSONObject(position - 1).getString("rate"));
+                        roomViewHolder.roomBeds.setText(
+                                "Guests : " +
+                                jsonArray.getJSONObject(position - 1).getString("beds"));
+                        roomViewHolder.roomRate.setText(
+                                "\u20B9" +
+                                jsonArray.getJSONObject(position - 1).getString("rate"));
                         roomViewHolder.view.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

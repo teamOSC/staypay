@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:padding="3dp"
             android:layout_weight="1"
             android:orientation="vertical"
@@ -45,26 +45,33 @@
 
 
             <TextView
+                android:padding="5dp"
                 android:fontFamily="sans-serif-light"
                 android:id="@+id/room_available"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Text" />
+                android:text="Available : 2" />
 
             <TextView
-                android:fontFamily="sans-serif-light"
-                android:id="@+id/room_rate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text" />
-
-            <TextView
+                android:padding="5dp"
                 android:fontFamily="sans-serif-light"
                 android:id="@+id/room_beds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Text" />
-        </LinearLayout>
+                android:text="Beds : 2"
+                android:layout_below="@id/room_available"/>
+
+            <TextView
+                android:textSize="24dp"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold"
+                android:id="@+id/room_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$ 2499"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
 
 
 
