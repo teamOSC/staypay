@@ -43,7 +43,7 @@ public class MyRoomActivity extends AppCompatActivity implements OnClickListener
 
         roomCleaning.setOnClickListener(this);
         roomService.setOnClickListener(this);
-        cab.setOnClickListener(this);
+        //cab.setOnClickListener(this);
         food.setOnClickListener(this);
 
         light.setOnCheckedChangeListener(this);
