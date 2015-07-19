@@ -35,7 +35,6 @@ public class MyRoomActivity extends AppCompatActivity implements OnClickListener
         roomNumber = (TextView) findViewById(R.id.myroom_no);
         Button roomCleaning = (Button) findViewById(R.id.myroom_clean);
         Button roomService = (Button) findViewById(R.id.myroom_service);
-        cab = (Button) findViewById(R.id.myroom_cab);
         food = (Button) findViewById(R.id.myroom_food);
         light = (Switch) findViewById(R.id.switch_light);
         fan = (Switch) findViewById(R.id.switch_fan);
@@ -85,8 +84,6 @@ public class MyRoomActivity extends AppCompatActivity implements OnClickListener
 
         if(view.getId() == R.id.myroom_food){
             startActivity(new Intent(this, FoodActivity.class));
-        }else if(view.getId() == R.id.myroom_cab){
-            startActivity(new Intent(this, CabActivity.class));
         }else{
             Toast.makeText(getApplicationContext(), "Request sent", Toast.LENGTH_SHORT).show();
         }

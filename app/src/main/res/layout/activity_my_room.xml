@@ -141,17 +141,6 @@
             android:padding="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
-
-        <Button
-            android:backgroundTint="@android:color/holo_red_dark"
-            android:textColor="@android:color/white"
-            android:layout_weight="1"
-            android:id="@+id/myroom_cab"
-            android:text="Cab Book"
-            android:fontFamily="sans-serif-thin"
-            android:padding="10dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 
 
