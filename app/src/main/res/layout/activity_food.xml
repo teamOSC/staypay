@@ -1,12 +1,20 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.greplr.staypay.FoodActivity">
 
     <android.support.v7.widget.CardView
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@android:color/holo_green_light"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:padding="10dp">
@@ -18,6 +26,9 @@
 
 
             <TextView
+                android:textStyle="italic"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Paneer Lababdar"
@@ -26,6 +37,8 @@
                 android:layout_alignParentStart="true" />
 
             <TextView
+                android:fontFamily="sans-serif-light"
+                android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rs. 120"
@@ -38,6 +51,8 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@android:color/holo_green_light"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:padding="10dp">
@@ -49,6 +64,9 @@
 
 
             <TextView
+                android:textStyle="italic"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Paneer Lababdar"
@@ -57,6 +75,8 @@
                 android:layout_alignParentStart="true" />
 
             <TextView
+                android:fontFamily="sans-serif-light"
+                android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rs. 120"
@@ -69,6 +89,8 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@android:color/holo_green_light"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:padding="10dp">
@@ -80,6 +102,9 @@
 
 
             <TextView
+                android:textStyle="italic"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dal Makhni"
@@ -88,6 +113,8 @@
                 android:layout_alignParentStart="true" />
 
             <TextView
+                android:fontFamily="sans-serif-light"
+                android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rs. 100"
@@ -100,6 +127,8 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@android:color/holo_green_light"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:padding="10dp">
@@ -111,6 +140,9 @@
 
 
             <TextView
+                android:textStyle="italic"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Shahi Paneer"
@@ -119,6 +151,8 @@
                 android:layout_alignParentStart="true" />
 
             <TextView
+                android:fontFamily="sans-serif-light"
+                android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rs. 110"
@@ -131,6 +165,8 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@android:color/holo_green_light"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:padding="10dp">
@@ -142,6 +178,9 @@
 
 
             <TextView
+                android:textStyle="italic"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Soya Chaap"
@@ -150,6 +189,8 @@
                 android:layout_alignParentStart="true" />
 
             <TextView
+                android:fontFamily="sans-serif-light"
+                android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rs. 110"
@@ -162,6 +203,8 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@android:color/holo_red_light"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:padding="10dp">
@@ -173,6 +216,9 @@
 
 
             <TextView
+                android:textStyle="italic"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chilli Chicken"
@@ -181,6 +227,8 @@
                 android:layout_alignParentStart="true" />
 
             <TextView
+                android:fontFamily="sans-serif-light"
+                android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rs. 160"
@@ -193,6 +241,8 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="@android:color/holo_red_light"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:padding="10dp">
@@ -204,6 +254,9 @@
 
 
             <TextView
+                android:textStyle="italic"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pudeena Chicken"
@@ -212,6 +265,8 @@
                 android:layout_alignParentStart="true" />
 
             <TextView
+                android:fontFamily="sans-serif-light"
+                android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rs. 170"
@@ -225,4 +280,5 @@
 
 
 
-</RelativeLayout>
+</LinearLayout>
+</ScrollView>
