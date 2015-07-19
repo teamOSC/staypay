@@ -29,6 +29,7 @@ import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String USER_ID = "42";
     private static final String TAG = "MainActivity";
     private static final String MIME_TEXT_PLAIN = "text/plain";
 
@@ -197,13 +198,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             if (s != null) {
-                String regex = "hotel/(\\d*)/room";
+                String regex = "hotel/(\\d*)/room/(\\d*)";
                 Pattern p = Pattern.compile(regex);
                 Matcher m = p.matcher(s);
-                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-              String roomNumber = sp.getString("room_number", "-42");
+                //SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                //String roomNumber = sp.getString("room_number", "-42");
                 if (m.find()) {
-                    if( roomNumber != "-42"){
                         new GetTask() {
                             @Override
                             protected void onPostExecute(String s) {
@@ -220,10 +220,8 @@ public class MainActivity extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                             }
-                        }.execute(s + roomNumber + "?cmd=unlock&user_id=42");
-                    }else{
-                        Toast.makeText(getApplicationContext(), "Authorization error", Toast.LENGTH_SHORT).show();
-                    }
+                        }.execute(s + "?cmd=unlock&user_id="+MainActivity.USER_ID);
+
                 } else {
                     new GetTask() {
                         @Override
