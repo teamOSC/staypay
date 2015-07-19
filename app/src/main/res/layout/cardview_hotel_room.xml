@@ -11,41 +11,55 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <RelativeLayout
             android:layout_weight="1"
-            android:scaleType="centerCrop"
-            android:id="@+id/room_image"
             android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_height="150dp">
+
+            <ImageView
+                android:scaleType="centerCrop"
+                android:id="@+id/room_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/room1" />
+            <TextView
+                android:padding="2dp"
+                android:textColor="@android:color/white"
+                android:text="Room Type"
+                android:background="@color/transparent_dark"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="sans-serif-light"
+                android:textSize="20dp"
+                android:ellipsize="marquee"
+                android:id="@+id/room_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
 
         <LinearLayout
-            android:padding="2dp"
+            android:padding="3dp"
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/room_type"
-                android:maxLines="2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Text" />
 
             <TextView
+                android:fontFamily="sans-serif-light"
                 android:id="@+id/room_available"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text" />
 
             <TextView
+                android:fontFamily="sans-serif-light"
                 android:id="@+id/room_rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text" />
 
             <TextView
+                android:fontFamily="sans-serif-light"
                 android:id="@+id/room_beds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
