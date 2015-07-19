@@ -98,6 +98,7 @@ public class HotelActivity extends AppCompatActivity {
                 default:
                     RoomViewHolder roomViewHolder = (RoomViewHolder) holder;
                     try {
+                        roomViewHolder.roomImage.setImageDrawable(getResources().getDrawable(R.drawable.room1));
                         roomViewHolder.roomsAvailable.setText(jsonArray.getJSONObject(position - 1).getString("available"));
                         roomViewHolder.roomType.setText(jsonArray.getJSONObject(position - 1).getString("type_name"));
                         roomViewHolder.roomBeds.setText(jsonArray.getJSONObject(position - 1).getString("beds"));

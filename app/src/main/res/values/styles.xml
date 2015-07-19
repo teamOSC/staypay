@@ -1,8 +1,14 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+
+    </style>
+
+    <style name="foodRatingBar" parent="@android:style/Widget.Holo.RatingBar.Small">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:maxHeight">48dp</item>
     </style>
 
 </resources>
