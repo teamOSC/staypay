@@ -15,7 +15,6 @@ public class MyRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_room);
         TextView roomNumber = (TextView) findViewById(R.id.myroom_no);
-        RecyclerView appliances = (RecyclerView) findViewById(R.id.myroom_recyclerview);
         Button roomCleaning = (Button) findViewById(R.id.myroom_clean);
         Button roomService = (Button) findViewById(R.id.myroom_service);
     }
