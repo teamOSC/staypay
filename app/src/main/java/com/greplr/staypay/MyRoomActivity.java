@@ -1,5 +1,6 @@
 package com.greplr.staypay;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -24,6 +25,8 @@ public class MyRoomActivity extends AppCompatActivity implements OnClickListener
     private Switch ac;
     private TextView roomNumber;
     private String BASE_URL;
+    Button cab;
+    Button food;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class MyRoomActivity extends AppCompatActivity implements OnClickListener
         roomNumber = (TextView) findViewById(R.id.myroom_no);
         Button roomCleaning = (Button) findViewById(R.id.myroom_clean);
         Button roomService = (Button) findViewById(R.id.myroom_service);
+        food = (Button) findViewById(R.id.myroom_food);
         light = (Switch) findViewById(R.id.switch_light);
         fan = (Switch) findViewById(R.id.switch_fan);
         nightLight = (Switch) findViewById(R.id.switch_night_light);
@@ -39,6 +43,8 @@ public class MyRoomActivity extends AppCompatActivity implements OnClickListener
 
         roomCleaning.setOnClickListener(this);
         roomService.setOnClickListener(this);
+        cab.setOnClickListener(this);
+        food.setOnClickListener(this);
 
         light.setOnCheckedChangeListener(this);
         fan.setOnCheckedChangeListener(this);
@@ -75,7 +81,15 @@ public class MyRoomActivity extends AppCompatActivity implements OnClickListener
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(getApplicationContext(), "Request sent", Toast.LENGTH_SHORT).show();
+
+        if(view.getId() == R.id.myroom_food){
+            startActivity(new Intent(this, FoodActivity.class));
+        }else{
+            Toast.makeText(getApplicationContext(), "Request sent", Toast.LENGTH_SHORT).show();
+        }
+
+
+
     }
 
     @Override

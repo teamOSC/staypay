@@ -7,4 +7,8 @@
     <string name="title_activity_hotel">HotelActivity</string>
     <string name="title_activity_book">Room Booking</string>
     <string name="title_activity_my_room">My Room</string>
+    <string name="title_activity_bitcoin">BitcoinActivity</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
+    <string name="title_activity_cab">CabActivity</string>
+    <string name="title_activity_food">FoodActivity</string>
 </resources>
