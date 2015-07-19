@@ -1,6 +1,7 @@
 package com.greplr.staypay;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -18,6 +19,8 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Random;
 
 public class HotelActivity extends AppCompatActivity {
 
@@ -98,7 +101,13 @@ public class HotelActivity extends AppCompatActivity {
                 default:
                     RoomViewHolder roomViewHolder = (RoomViewHolder) holder;
                     try {
-                        roomViewHolder.roomImage.setImageDrawable(getResources().getDrawable(R.drawable.room1));
+                        Drawable rooms[] = {
+                                getResources().getDrawable(R.drawable.room1),
+                                getResources().getDrawable(R.drawable.room2),
+                                getResources().getDrawable(R.drawable.room3),
+                        };
+                        //Random r = new Random();
+                        roomViewHolder.roomImage.setImageDrawable(rooms[position - 1]);
                         roomViewHolder.roomsAvailable.setText(jsonArray.getJSONObject(position - 1).getString("available"));
                         roomViewHolder.roomType.setText(jsonArray.getJSONObject(position - 1).getString("type_name"));
                         roomViewHolder.roomBeds.setText(jsonArray.getJSONObject(position - 1).getString("beds"));
